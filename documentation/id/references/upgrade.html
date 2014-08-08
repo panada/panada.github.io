@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<link rel="stylesheet" href="../../style.css" type="text/css" media="screen" />
+<title>Panada PHP Framework 1.0.0 Documentation - Upgrade</title>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+	    <a target="_blank" href="http://panadaframework.com/"><img src="../../images/logo.png" height="21" border="0" /></a>
+	</div>
+        <div class="menu">
+            <form action="http://www.google.com/search" method="get">
+	    <input type="hidden" value="panadaframework.com/documentation/" id="as_sitesearch" name="as_sitesearch">
+            <input class="search-input" type="text" name="q" /><button class="search-button" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+    <div class="subheader">
+        <h1>Panada Framework 1.0.0 Documentation</h1>
+    </div>
+    <div class="wrapper">
+        <div class="sidebar">
+            <div class="navigation">
+                <ul>
+                    <li>
+                        <a href="../index.html">Umum</a>
+                        <ul>
+                            <li><a href="../index.html#about">Tentang Panada</a></li>
+                            <li><a href="../index.html#feature">Keunggulan (<em>Feature</em>)</a></li>
+                            <li><a href="../index.html#license">Lisensi</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="../config.html">Konfigurasi</a>
+                        <ul>
+                            <li><a href="../config.html#general">Dasar</a></li>
+                            <li><a href="../config.html#additional_config">Tambahan</a></li>
+                            <li><a href="../config.html#webserver">Webserver</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        Referensi
+                        <ul>
+                            <li><a href="controller.html">Controller</a></li>
+                            <li><a href="model.html">Model</a></li>
+                            <li><a href="view.html">View</a></li>
+                            <li><a href="library.html">Library</a></li>
+                            <li><a href="autoloader.html">Auto Loader</a></li>
+                            <li><a href="global_method.html">Global Method dan Properties</a></li>
+                            <li>
+                                <a href="module.html">Module</a>
+                                <ul>
+                                    <li><a href="#create_module">Membuat Module</a></li>
+                                    <li><a href="#config_module">Konfigurasi Module</a></li>
+                                    <li><a href="#controller_module">Controller Module</a></li>
+                                    <li><a href="#view_module">View Module</a></li>
+                                    <li><a href="#model_module">Model Module</a></li>
+                                    <li><a href="#library_module">Library Module</a></li>
+                                    <li><a href="#using_module">Penggunaan Module</a></li>
+                                    <li><a href="#discussion">Diskusi</a></li>
+                                </ul>
+                            </li>
+			    <li><a href="vendor.html">Vendor</a></li>
+                            <li class="active"><a href="upgrade.html">Upgrade</a></li>
+                        </ul>
+                            
+                    </li>
+                    <li>
+                        <a href="../classes/index.html">Resources</a>
+                        <ul>
+                            <li><a href="../classes/database/index.html">Database</a></li>
+                            <li><a href="../classes/cache/index.html">Cache</a></li>
+                            <li><a href="../classes/session.html">Session</a></li>
+                            <li><a href="../classes/pagination.html">Pagination</a></li>
+                            <li><a href="../classes/email.html">Email</a></li>
+                            <li><a href="../classes/encryption.html">Encryption</a></li>
+                            <li><a href="../classes/upload.html">Upload</a></li>
+                            <li><a href="../classes/image.html">Image</a></li>
+                            <li><a href="../classes/request.html">Request</a></li>
+                            <li><a href="../classes/rest.html">RESTfull</a></li>
+			    <li><a href="../classes/tools.html">Tools</a></li>
+			    <li><a href="../classes/validation.html">Form Validation</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../contribution.html">Kontribusi</a></li>
+                    <li><a href="../credit.html">Credit</a></li>
+                </ul>
+	    </div>
+        </div>
+        <div class="content">
+            <div class="lead">
+                <h2>Upgrade</h2>
+		<p>Panada versi 1.0.0 adalah versi mayor yang hampir setiap file system-nya dibuat dan ditulis ulang dari awal. Terdapat perubahan aturan yang cukup mendasar bila dibandingkan dengan versi sebelumnya. Oleh karena itu, sangat disarankan untuk kembali membaca dokumentasi untuk versi yang terbaru ini.</p>
+                <p>Berikut adalah panduan untuk melakukan proses upgrade dari versi sebelumnya ke versi terbaru. Pastikan Anda sudah membackup data dan aplikasi sebelum melakukan proses upgrade.</p>
+            </div>
+            
+            <div class="main">
+                <h3>Versi 0.3.1 ke Versi 1.0.0</h3>
+		<ul>
+		    <li>Siapkan folder temporer dan download versi 1.0.0 di <a href="https://github.com/panada/Panada/archives/master">http://github.com/panada/Panada/archives/master</a> kemudian simpan ke folder temporer.</li>
+		    <li>Pindahkan setiap file controller yang ada di folder aplikasi Anda <strong>apps/controller/</strong> ke folder <strong>app/Controllers/</strong> yang ada di folder temporer.</li>
+		    <li>Rename setiap file yang dipindahkan sehingga setiap nama diawali dengan huruf kapital.</li>
+		    <li>
+			Tambahkan namespace dan use seprti di bawah ini disetiap awal file setelah tag pembuka PHP (&lt;?php):
+			<code>
+			    namespace Controllers;<br />
+			    use Resources;
+			</code>
+		    </li>
+		    <li>
+			Hilangkan pengecekan di bawah ini jika ada pada setiap file aplikasi Anda:
+			<code>
+			    defined('THISPATH') or die('Can\'t access directly!');
+			</code>
+		    </li>
+		    <li>Hilangkan prefix <strong>controller_</strong> sehingga yang ada hanya nama classnya saja. Setiap nama class juga harus diawali dengan hurup kapital.</li>
+		    <li>Ubah bagian <strong>extends Panada</strong> menjadi <strong>extends Resources\Controller</strong> di setiap file controller.</li>
+		    <li>Ubah semua method pemanggilan view yang lama dan gunakan method <strong>$this->output();</strong> untuk menampilkan file view.</li>
+		    <li>Ubah property <strong>$this->base_url</strong> di dalam setiap file view menjadi <strong>$this->uri->baseUri</strong>.</li>
+		    <li>Ulangi cara yang sama untuk class-class model, library dan module.</li>
+		    <li>Buka file-file yang ada di <strong>app/config/</strong> dan sesuaikan dengan kebutuhan aplikasi Anda.</li>
+		</ul>
+                
+            </div>
+            
+        
+            <div id="discussion" class="main">
+		<h3>Diskusi</h3>
+		<div id="disqus_thread"></div>
+	    </div>
+
+        </div>
+          
+    <div class="footer">
+	<span class="right">All Rights Reserved.</span>
+    </div>
+<script>
+var disqus_url = 'references/upgrade.html';
+</script>
+<script src="../../panada.js"></script>
+</body>
+</html>
