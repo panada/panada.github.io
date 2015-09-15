@@ -182,16 +182,16 @@ class Home extends Resources\Controller {
         parent::__construct();
         
         // Load file phpMailer/PHPMailer.php dengan nama class PHPMailer
-        $this->phpMailer = Resources/Import::vendor('phpMailer/PHPMailer');
+        $this->phpMailer = Resources\Import::vendor('phpMailer/PHPMailer');
         
         // Load file MyOwnLibs/Validation.php dengan nama class Validate dan argument constructor
-        $this->phpMailer = Resources/Import::vendor('MyOwnLibs/Validation', 'Validate', array('isEmail', true) );
+        $this->phpMailer = Resources\Import::vendor('MyOwnLibs/Validation', 'Validate', array('isEmail', true) );
     }
 }
 </textarea>
 		<p>Jika ingin melakukan pemanggilan static method, isikan string di argument ke dua dengan format <strong>ClassName::staticMethod</strong> seperti contoh berikut:</p>
 		<code>
-		    $this->myStatic = Resources/Import::vendor('MyOwnLibs/MyClass', 'MyClass::myStaticMethod', array('arg1', 'arg2') );
+		    $this->myStatic = Resources\Import::vendor('MyOwnLibs/MyClass', 'MyClass::myStaticMethod', array('arg1', 'arg2') );
 		</code>
             </div>
 	    
